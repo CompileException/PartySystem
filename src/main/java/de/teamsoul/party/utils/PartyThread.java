@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2020.
- * Plugin by Lucas L. - CompileException
+ * Plugin by Lucas L. - CompileException.
  */
 
 package de.teamsoul.party.utils;
