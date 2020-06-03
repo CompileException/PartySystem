@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2020.
+ * Plugin by Lucas L. - CompileException
+ */
+
 package de.teamsoul.party.config;
 
 import com.google.gson.JsonElement;
@@ -16,7 +21,6 @@ public interface IConfiguration {
     <T extends IConfiguration> T append(String paramString, JsonElement paramJsonElement);
 
     <T extends IConfiguration> T remove(String paramString);
-
     Set<String> keys();
 
     String getString(String paramString);

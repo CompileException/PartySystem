@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2020.
+ * Plugin by Lucas L. - CompileException
+ */
+
 package de.teamsoul.party.config;
 
 import com.google.gson.*;
