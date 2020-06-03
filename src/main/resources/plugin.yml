@@ -1,0 +1,7 @@
+name: PartySystem
+author: Lucas
+version: 1.0.0.0
+main: de.teamsoul.party.main.PartySystem
+commands:
+  party:
+  pc:

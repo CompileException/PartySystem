@@ -1,0 +1,10 @@
+de\teamsoul\party\main\Datasave.class
+de\teamsoul\party\mysql\MySQL.class
+de\teamsoul\party\commands\partychatcommand.class
+de\teamsoul\party\config\IConfiguration.class
+de\teamsoul\party\commands\partycommand.class
+de\teamsoul\party\utils\PartyThread.class
+de\teamsoul\party\utils\PartyManager.class
+de\teamsoul\party\listener\ServerSwitch.class
+de\teamsoul\party\main\PartySystem.class
+de\teamsoul\party\config\Configuration.class
