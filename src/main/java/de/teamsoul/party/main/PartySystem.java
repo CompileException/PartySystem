@@ -5,13 +5,14 @@
 
 package de.teamsoul.party.main;
 
-import de.teamsoul.party.config.Configuration;
 import de.teamsoul.party.listener.ServerSwitch;
 import de.teamsoul.party.mysql.MySQL;
 import de.teamsoul.party.utils.PartyManager;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
-import net.md_5.bungee.api.event.ServerSwitchEvent;
 import net.md_5.bungee.api.plugin.Plugin;
+import net.md_5.bungee.config.Configuration;
+import net.md_5.bungee.config.ConfigurationProvider;
+import net.md_5.bungee.config.YamlConfiguration;
 
 import java.awt.*;
 import java.io.File;
@@ -19,7 +20,6 @@ import java.util.HashMap;
 
 public class PartySystem extends Plugin {
 
-    Configuration configuration = new Configuration("MAIN");
     public String hostname;
     public int port;
     public String username;
@@ -29,20 +29,19 @@ public class PartySystem extends Plugin {
     private static PartySystem instance;
     public HashMap<ProxiedPlayer, PartyManager> manager;
 
-    public MySQL mySQL = new MySQL(hostname, port, database, username, password);
+    //MYSQL DATA
+    public static MySQL mySQL = new MySQL("localhost", 3306, "party", "root", "");
 
     @Override
     public void onEnable() {
         System.out.println("[Party] System gestartet!");
         System.out.println("Version: " + getDescription().getVersion());
-        loadconfiguration();
 
         try {
             register();
             fetchingData();
+            loadconfiguration();
             mysqlconnect();
-            new File("./plugins/Party/").mkdir();
-
         } catch (Exception e) {
             System.out.println("FEHLER BEI STARTEN!");
             System.out.println("SYSTEM STOPPT!");
@@ -55,8 +54,6 @@ public class PartySystem extends Plugin {
         System.out.println("[Party] System gestoppt!");
 
         mysqldisconnect();
-
-
     }
 
     public void register() {
@@ -72,22 +69,9 @@ public class PartySystem extends Plugin {
 
 
     public void loadconfiguration() {
-        if (!new File("./plugins/Party/").exists()) {
-            configuration.append("mysql.Host", "localhost");
-            configuration.append("mysql.Port", 3306);
-            configuration.append("mysql.User", "root");
-            configuration.append("mysql.Password", "pw");
-            configuration.append("mysql.Database", "Party");
-            configuration.saveAsConfig("./plugins/Party/");
-        } else {
-            configuration.loadToExistingConfiguration(new File("./plugins/Party"));
-            hostname = configuration.getString("mysql.Host");
-            port = configuration.getInt("mysql.Port");
-            database = configuration.getString("mysql.Database");
-            password = configuration.getString("mysql.Password");
-            username = configuration.getString("mysql.User");
-            configuration.saveAsConfig("./plugins/Party/");
-        }
+        try {
+
+        } catch (Exception e) { }
     }
 
     public void mysqlconnect() {

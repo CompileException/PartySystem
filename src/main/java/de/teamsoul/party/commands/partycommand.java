@@ -7,6 +7,7 @@ package de.teamsoul.party.commands;
 
 import de.teamsoul.party.main.Datasave;
 import de.teamsoul.party.main.PartySystem;
+import de.teamsoul.party.mysql.MySQLManager;
 import de.teamsoul.party.utils.PartyManager;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.ProxyServer;
@@ -38,7 +39,11 @@ public class partycommand extends Command {
                     p.sendMessage(Datasave.prefix + "§cDieser Spieler ist offline.");
                     return;
                 }
-                if (this.main.manager.containsKey(p)) {
+                if(MySQLManager.doEnablePartyRequests(tar.getName())) {
+                    p.sendMessage(Datasave.prefix + "§cDieser Spieler hat die Partyeinladungen deaktiviert!");
+                    return;
+
+                } else if (this.main.manager.containsKey(p)) {
                     PartyManager manager = this.main.manager.get(p);
                     if (manager.getOwner().equals(p)) {
                         if (!main.manager.containsKey(tar)) {
