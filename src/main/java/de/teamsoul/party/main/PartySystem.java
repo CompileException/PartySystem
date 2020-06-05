@@ -5,6 +5,8 @@
 
 package de.teamsoul.party.main;
 
+import de.teamsoul.party.commands.partychatcommand;
+import de.teamsoul.party.commands.partycommand;
 import de.teamsoul.party.listener.ServerSwitch;
 import de.teamsoul.party.mysql.MySQL;
 import de.teamsoul.party.utils.PartyManager;
@@ -40,8 +42,9 @@ public class PartySystem extends Plugin {
         try {
             register();
             fetchingData();
-            loadconfiguration();
             mysqlconnect();
+
+            manager.clear();
         } catch (Exception e) {
             System.out.println("FEHLER BEI STARTEN!");
             System.out.println("SYSTEM STOPPT!");
@@ -57,8 +60,8 @@ public class PartySystem extends Plugin {
     }
 
     public void register() {
-        new de.teamsoul.party.commands.partychatcommand(this);
-        new de.teamsoul.party.commands.partycommand(this);
+        new partychatcommand(this);
+        new partycommand(this);
         new ServerSwitch(this);
     }
 
@@ -67,19 +70,17 @@ public class PartySystem extends Plugin {
         instance = this;
     }
 
-
-    public void loadconfiguration() {
-        try {
-
-        } catch (Exception e) { }
-    }
-
     public void mysqlconnect() {
         try {
-            mySQL.openConnection();
-            System.out.println(SystemColor.GREEN + "MySQL connected!");
+            if(!mySQL.isConnected()) {
+                mySQL.openConnection();
+                System.out.println("MySQL connected!");
+            } else {
+                System.out.println("MySQL connected!");
+            }
+
         } catch (Exception e) {
-            System.out.println(SystemColor.red + "Fehler beim verbinden der MySQL!");
+            System.out.println("Fehler beim verbinden der MySQL!");
             e.printStackTrace(); }
     }
 

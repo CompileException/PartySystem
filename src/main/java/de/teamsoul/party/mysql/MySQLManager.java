@@ -12,7 +12,7 @@ public class MySQLManager {
     public static boolean doEnablePartyRequests(String Name) {
         try {
             Connection connection = PartySystem.mySQL.openConnection().getConnection();
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM Friends WHERE Name = ? AND AllowParty = true");
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM friends WHERE Name = ? AND AllowParty = true");
             ps.setString(1, Name);
             ResultSet rs = ps.executeQuery();
 

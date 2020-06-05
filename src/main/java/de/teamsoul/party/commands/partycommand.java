@@ -39,7 +39,7 @@ public class partycommand extends Command {
                     p.sendMessage(Datasave.prefix + "§cDieser Spieler ist offline.");
                     return;
                 }
-                if(!MySQLManager.doEnablePartyRequests(tar.getName())) {
+                if(MySQLManager.doEnablePartyRequests(tar.getName()) == true) {
                     p.sendMessage(Datasave.prefix + "§cDieser Spieler hat die Partyeinladungen deaktiviert!");
                     return;
 
@@ -50,6 +50,7 @@ public class partycommand extends Command {
                             if (!manager.getMembers().contains(tar)) {
                                 if (!manager.getInvites().contains(tar)) {
                                     manager.sendInvite(tar);
+                                    p.sendMessage(Datasave.prefix + "§7Du hast den Spieler §6" + tar.getName() + " §7zu deiner Party eingeladen!");
                                 } else {
                                     p.sendMessage(Datasave.prefix + "§7Der Spieler ist bereits in der Party oder hat schon eine Anfrage erhalten.");
                                 }
@@ -111,7 +112,6 @@ public class partycommand extends Command {
                 } else {
                     p.sendMessage(Datasave.prefix + "§7Du bist in §ckeiner §7Party!");
                 }
-
             } else if (args[0].equalsIgnoreCase("list")) {
                 if (main.manager.containsKey(p)) {
                     if (main.manager.get(p).getMembers().contains(p)) {
@@ -136,6 +136,7 @@ public class partycommand extends Command {
                 p.sendMessage("§b/party accept §7- Akzeptiere eine Party-Anfrage!");
                 p.sendMessage("§b/party deny §7- Lehne eine Party-Anfrage ab!");
                 p.sendMessage("§b/party leave §7- Verlasse die momentane Party!");
+                //p.sendMessage("§b/party kick §7- Kicke eine Person aus der Party!");
                 p.sendMessage("§b/party list §7- Lass dir alle Mitglieder deiner Party anzeigen!");
                 p.sendMessage("§b/party help §7- Lass dir alle Commands vom Party-Plugin zeigen!");
                 p.sendMessage("§b/pc §7<Nachricht> §7- Sende eine Nachricht in den Party-Chat!");
@@ -145,6 +146,7 @@ public class partycommand extends Command {
             p.sendMessage("§b/party accept §7- Akzeptiere eine Party-Anfrage!");
             p.sendMessage("§b/party deny §7- Lehne eine Party-Anfrage ab!");
             p.sendMessage("§b/party leave §7- Verlasse die momentane Party!");
+            //p.sendMessage("§b/party kick §7- Kicke eine Person aus der Party!");
             p.sendMessage("§b/party list §7- Lass dir alle Mitglieder deiner Party anzeigen!");
             p.sendMessage("§b/party help §7- Lass dir alle Commands vom Party-Plugin zeigen!");
             p.sendMessage("§b/pc §7<Nachricht> §7- Sende eine Nachricht in den Party-Chat!");

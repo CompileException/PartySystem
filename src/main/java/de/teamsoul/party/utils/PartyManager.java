@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class PartyManager {
 
-    private ArrayList<ProxiedPlayer> members;
+    public ArrayList<ProxiedPlayer> members;
     private ArrayList<ProxiedPlayer> invites;
     private ProxiedPlayer owner;
     private PartySystem main;

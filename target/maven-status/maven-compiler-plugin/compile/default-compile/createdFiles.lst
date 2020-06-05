@@ -1,4 +1,5 @@
 de\teamsoul\party\main\Datasave.class
+de\teamsoul\party\mysql\MySQLManager.class
 de\teamsoul\party\mysql\MySQL.class
 de\teamsoul\party\commands\partychatcommand.class
 de\teamsoul\party\commands\partycommand.class
