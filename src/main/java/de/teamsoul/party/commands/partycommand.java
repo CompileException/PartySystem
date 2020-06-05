@@ -39,7 +39,7 @@ public class partycommand extends Command {
                     p.sendMessage(Datasave.prefix + "§cDieser Spieler ist offline.");
                     return;
                 }
-                if(MySQLManager.doEnablePartyRequests(tar.getName())) {
+                if(!MySQLManager.doEnablePartyRequests(tar.getName())) {
                     p.sendMessage(Datasave.prefix + "§cDieser Spieler hat die Partyeinladungen deaktiviert!");
                     return;
 
@@ -47,8 +47,8 @@ public class partycommand extends Command {
                     PartyManager manager = this.main.manager.get(p);
                     if (manager.getOwner().equals(p)) {
                         if (!main.manager.containsKey(tar)) {
-                            if (!manager.getMembers().contains(p)) {
-                                if (!manager.getInvites().contains(p)) {
+                            if (!manager.getMembers().contains(tar)) {
+                                if (!manager.getInvites().contains(tar)) {
                                     manager.sendInvite(tar);
                                 } else {
                                     p.sendMessage(Datasave.prefix + "§7Der Spieler ist bereits in der Party oder hat schon eine Anfrage erhalten.");
