@@ -7,6 +7,7 @@ package de.teamsoul.party.main;
 
 import de.teamsoul.party.commands.partychatcommand;
 import de.teamsoul.party.commands.partycommand;
+import de.teamsoul.party.listener.JoinQuitManager;
 import de.teamsoul.party.listener.ServerSwitch;
 import de.teamsoul.party.mysql.MySQL;
 import de.teamsoul.party.utils.PartyManager;
@@ -63,6 +64,7 @@ public class PartySystem extends Plugin {
         new partychatcommand(this);
         new partycommand(this);
         new ServerSwitch(this);
+        new JoinQuitManager();
     }
 
     public void fetchingData() {
