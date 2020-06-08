@@ -39,6 +39,7 @@ public class PartySystem extends Plugin {
     public void onEnable() {
         System.out.println("[Party] System gestartet!");
         System.out.println("Version: " + getDescription().getVersion());
+        System.out.println("Version: " + getDescription().getVersion());
 
         try {
             register();
